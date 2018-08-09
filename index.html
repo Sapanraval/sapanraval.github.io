@@ -5,6 +5,9 @@
    <title>LOAD CSV</title>
 </head>
 <body>
+
+  <div id="table-div"></div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.2/papaparse.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
@@ -22,7 +25,7 @@
 
 
 <script>
-  
+
     function arrayToTable(tableData) {
         var table = $('<table  id="sample1"></table>');
         $(tableData).each(function (i, rowData) {
@@ -37,7 +40,7 @@
 
     $.ajax({
         type: "GET",
-        url: "data/......",
+        url: "data/Sample_Data.csv",
         success: function (data) {
             $('#table-div').append(arrayToTable(Papa.parse(data).data));
         }
