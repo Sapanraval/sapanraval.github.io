@@ -22,7 +22,7 @@
        }
        $.ajax({
            type: "GET",
-           url: "data/sample_data.csv",
+           url: "data/Sample_Data.csv",
            success: function (data) {
                $('body').append(arrayToTable(Papa.parse(data).data));
            }
