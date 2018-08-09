@@ -36,7 +36,7 @@
        }
        $.ajax({
            type: "GET",
-           url: "data/unemployment.csv",
+           url: "data/Sample_Data.csv",
            success: function (data) {
                $('body').append(arrayToTable(Papa.parse(data).data));
            }
