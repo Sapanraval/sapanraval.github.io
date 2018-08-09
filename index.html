@@ -22,24 +22,42 @@
 
 
 <script>
-   $(document).ready(function(){
-       function arrayToTable(tableData) {
-           var table = $('<table></table>');
-           $(tableData).each(function (i, rowData) {
-               var row = $('<tr></tr>');
-               $(rowData).each(function (j, cellData) {
-                   row.append($('<td>'+cellData+'</td>'));
-               });
-               table.append(row);
-           });
-           return table;
-       }
-       $.ajax({
-           type: "GET",
-           url: "data/Sample_Data.csv",
-           success: function (data) {
-               $('body').append(arrayToTable(Papa.parse(data).data));
-           }
-       });
-   });
+  
+    function arrayToTable(tableData) {
+        var table = $('<table  id="sample1"></table>');
+        $(tableData).each(function (i, rowData) {
+            var row = $('<tr></tr>');
+            $(rowData).each(function (j, cellData) {
+                row.append($('<td>'+cellData+'</td>'));
+            });
+            table.append(row);
+        });
+        return table;
+    }
+
+    $.ajax({
+        type: "GET",
+        url: "data/......",
+        success: function (data) {
+            $('#table-div').append(arrayToTable(Papa.parse(data).data));
+        }
+    }).done(function(){
+
+            $('#sample1').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'pageLength', 'csv', 'excel', 'pdf', 'print'
+        ],
+
+        lengthMenu: [
+            [ 10, 25, 50, -1 ],
+            [ '10 rows', '25 rows', '50 rows', '100 rows','Show all' ]
+        ],
+
+        "order": [[ 3, "desc" ]]
+
+    } );
+
+
+    });
 </script>
